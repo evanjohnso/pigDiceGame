@@ -12,21 +12,16 @@
       <div class="jumbotron">
         <h1>Swine Dice Game!</h1>
       </div>
-      <!-- <form id="diceRoll">
-        <div class="form-group">
-          <input type=number id="diceNumber">
-        </div>
-
-        <button type="submit" class="btn btn-success">Roll</button>
-      </form> -->
-      <button class="btn btn-danger" id="onePlayer">One Player!</button>
-      <!-- <button class="btn btn-danger" id="twoPlayers">Two Players!</button> -->
+      <div class="playerButtons">
+        <button class="btn btn-danger" id="onePlayer">One Player!</button>
+        <button class="btn btn-danger" id="twoPlayers">Two Players!</button>
+      </div>
 
       <div class="row">
         <div class="col-md-6">
           <h3>Player One</h3>
           <div class="square square1">
-
+            <p>0</p>
           </div>
 
           <p>This turn: <span class="user1Turn">0</span></p>
@@ -38,7 +33,7 @@
         <div class="col-md-6">
           <h3>Player Two</h3>
           <div class="square square2">
-
+            <p>0</p>
           </div>
           <p>This turn: <span class="user2Turn">0</span></p>
           <p>Your total: <span class="user2Total">0</span></p>
