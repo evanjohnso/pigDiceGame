@@ -2,3 +2,15 @@
   text-align: center;
   margin-top: 2%;
 }
+
+.col-md-6 {
+  text-align: center;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  margin: auto;
+  font-size: 70px;
+}
