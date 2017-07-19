@@ -1,7 +1,8 @@
 //Business Logic
 function LetsPlay () {
-  this.gameDie = new Dice();
+  this.gameDie = new Dice ();
   this.player1 = new Player ();
+  this.player2 = new Player ();
 
   function Dice () {
     this.sides = 6;
@@ -12,7 +13,7 @@ function LetsPlay () {
   }
 
   function Player () {
-    this.user = 'Player 1';
+    this.user = 'Player: ';
     this.roll = [];
     this.turn = 0;
     this.total = 0;
@@ -20,44 +21,57 @@ function LetsPlay () {
 
   Player.prototype.calculateTurn = function(thisRoll) {
     if (thisRoll === 1) {
-      console.log('Your turn is over!');
+      alert('Your turn is over!');
       return this.turn = 0;
     } else {
       this.turn += thisRoll;
-      this.total += thisRoll;
       if (this.total >= 100) {
         this.turn = 0;
         this.total = 0;
         return alert('You win!!!!!!');
       }
+    }
   }
-
-  // function rollClick (firstRoll) {
-  //   return firstRoll.diceRoll();
-  // }
-
-}
-
+  Player.prototype.hold = function () {
+    this.total += this.turn;
+    return this.turn = 0;
+  }
 }
 //User Interface
 $(document).ready(function() {
   //When document loads, create gameDie
-  var game = new LetsPlay ();
-
+  var game =  new LetsPlay ();
 
   $('.player1').click(function() {
     //Access dice roll and roll it
     var thisRoll = game.gameDie.diceRoll();
     game.player1.calculateTurn(thisRoll);
     //Add this roll number to player turn and player total
-    //
-    // var thisTurn = game.player1.turn += thisRoll;
-    // var sumTotal = game.player1.total += (thisRoll);
-
-    // game.player1.roll.unshift(thisRoll);
-    // console.log(thisTurn);
     $('.square1').text(thisRoll);
     $('.user1Turn').text(game.player1.turn);
     $('.user1Total').text(game.player1.total);
+  });
+  $('.player1Hold').click(function () {
+    console.log(game.player1.turn);
+    game.player1.hold();
+    $('.user1Total').text(game.player1.total);
+    $('.user1Turn').text(game.player1.turn);
+  });
+
+  $('.player2').click(function() {
+    //Access dice roll and roll it
+    var thisRoll = game.gameDie.diceRoll();
+    game.player2.calculateTurn(thisRoll);
+    //Add this roll number to player turn and player total
+    $('.square2').text(thisRoll);
+    $('.user2Turn').text(game.player2.turn);
+    $('.user2Total').text(game.player2.total);
+  });
+  $('.player2Hold').click(function () {
+    console.log(game.player2.turn);
+    game.player2.hold();
+    // alert("hello");
+    $('.user2Total').text(game.player2.total);
+    $('.user2Turn').text(game.player2.turn);
   });
 });
