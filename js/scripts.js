@@ -8,6 +8,10 @@ function GameBoard () {
   function Dice () {
     this.sides = 6;
   }
+  //Random number from 1-6
+  Dice.prototype.diceRoll = function() {
+    return Math.floor(Math.random() * this.sides) + 1;
+  }
   //Create number of players
 
   //NEED TO REFACTOR TO MAKE PLAYER1 AND PLAYER2 MATCH UP TO THE USERNAME OF EACH INDEX OF THE PLAYERS ARRAY
@@ -16,10 +20,7 @@ function GameBoard () {
     this.players.push(new Player(i + 1) );
     }
   }
-  //Random number from 1-6
-  Dice.prototype.diceRoll = function() {
-    return Math.floor(Math.random() * this.sides) + 1;
-  }
+
   //Player Object
   function Player (user) {
     this.user = 'Player' + user;
