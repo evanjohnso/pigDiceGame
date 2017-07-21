@@ -35,3 +35,7 @@ body {
   background: white;
   color: black;
 }
+
+.col-md-6 {
+  display: none;
+}
